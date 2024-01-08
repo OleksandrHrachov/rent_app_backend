@@ -3,11 +3,8 @@ const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
 const { offerModel } = require("./schema/offer");
-const connectDb = require("./connectDb");
 
 const PORT = process.env.PORT || 5000;
-
-connectDb();
 
 const app = express();
 
@@ -49,21 +46,18 @@ app.post("/", async (req, res) => {
   }
 });
 
-// const start = async () => {
-//   try {
-//     await mongoose.connect(process.env.DB_URL);
-//     console.log("MONGO_DB - connected");
+const start = async () => {
+  try {
+    await mongoose.connect(process.env.DB_URL);
+    console.log("MONGO_DB - connected");
 
-//     app.listen(PORT, () => {
-//       console.log("listening on port =>", PORT);
-//     });
-//   } catch (error) {
-//     console.warn('ERROR =>', error);
-//   }
-// }
+    app.listen(PORT, () => {
+      console.log("listening on port =>", PORT);
+    });
+  } catch (error) {
+    console.warn('ERROR =>', error);
+  }
+}
 
-// start();
+start();
 
-app.listen(PORT, () => {
-  console.log("listening on port =>", PORT);
-});
