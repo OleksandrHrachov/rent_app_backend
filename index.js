@@ -19,7 +19,7 @@ app.get('/', async (req, res) => {
 
 app.post('/', async (req, res) => {
   const body = req.body;
-  
+
   if (!body.info) {
     res.sendStatus(404);
   } else {
@@ -61,3 +61,5 @@ const start = async () => {
 }
 
 start();
+
+module.exports = app;
