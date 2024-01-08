@@ -7,6 +7,7 @@
 
 # production
 /build
+vercel.json
 
 # misc
 .DS_Store
